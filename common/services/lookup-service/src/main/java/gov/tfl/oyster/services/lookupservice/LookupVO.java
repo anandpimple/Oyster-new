@@ -4,6 +4,7 @@ import gov.tfl.oyster.common.domains.AbstractBaseVO;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**

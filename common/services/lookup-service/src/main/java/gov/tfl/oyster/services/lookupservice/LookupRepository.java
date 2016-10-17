@@ -15,8 +15,6 @@ import java.util.Optional;
 @Repository
 @Qualifier(value = "lookupRepository" )
 public interface LookupRepository extends JpaRepository<LookupTypeVO, Long>{
-    @Query(name = "FindLookupByNameAndType")
-    Optional<LookupVO> findLookupByNameAndType(@Param("name") String name, @Param("typeName") String typeName);
     @Query(name = "FindLookupTypeByName")
     Optional<LookupTypeVO> findLookupTypeByName(@Param("typeName") String typeName);
 }

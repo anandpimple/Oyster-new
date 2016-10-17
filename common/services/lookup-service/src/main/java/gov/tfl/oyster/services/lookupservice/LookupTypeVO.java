@@ -11,6 +11,10 @@ import java.util.List;
 
 @Entity
 @Table(name="TFL_LOOKUP_TYPE")
+@NamedQueries(value = {
+        @NamedQuery(name = "FindLookupTypeByName",query = "SELECT * FROM LookupTypeVO vo where vo.description = :typeName"),
+        @NamedQuery(name = "FindLookupByNameAndType",query = "SELECT * FROM LookupTypeVO vo where vo.description = :typeName AND vo.")
+})
 public class LookupTypeVO extends AbstractBaseVO {
     private static final long serialVersionUID = -7505301198588550535L;
     private String description;
