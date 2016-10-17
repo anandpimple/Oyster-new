@@ -16,5 +16,7 @@
 
     <properties>
         <springframework.version>LATEST</springframework.version>
+        <springframework.data.version>LATEST</springframework.data.version>
+        <javax.persistence.api.version>LATEST</javax.persistence.api.version>
     </properties>
 </project>
