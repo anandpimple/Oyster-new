@@ -15,8 +15,21 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <springframework.version>LATEST</springframework.version>
-        <springframework.data.version>LATEST</springframework.data.version>
-        <javax.persistence.api.version>LATEST</javax.persistence.api.version>
+        <springframework.version>RELEASE</springframework.version>
+        <springframework.data.version>RELEASE</springframework.data.version>
+        <javax.persistence.api.version>RELEASE</javax.persistence.api.version>
     </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

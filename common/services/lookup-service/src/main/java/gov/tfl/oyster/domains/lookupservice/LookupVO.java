@@ -1,17 +1,16 @@
-package gov.tfl.oyster.services.lookupservice;
+package gov.tfl.oyster.domains.lookupservice;
 
-import gov.tfl.oyster.common.domains.AbstractBaseVO;
+import gov.tfl.oyster.domains.common.AbstractBaseVO;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
  * Created by dev on 17/10/16.
  */
 @Entity
-@Table(name="TFL_LOOKUP")
+@Table(name="TFL_LOOKUP1")
 public class LookupVO extends AbstractBaseVO{
     private static final long serialVersionUID = 8652833103938993254L;
 

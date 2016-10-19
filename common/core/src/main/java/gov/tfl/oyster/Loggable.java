@@ -1,6 +1,5 @@
-package gov.tfl.oyster.common.domains;
+package gov.tfl.oyster;
 
-import sun.util.logging.PlatformLogger;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;

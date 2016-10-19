@@ -1,5 +1,6 @@
-package gov.tfl.oyster.common.domains;
+package gov.tfl.oyster.domains.common;
 
+import javax.annotation.Generated;
 import javax.persistence.*;
 import java.lang.reflect.Method;
 import java.time.LocalDateTime;
@@ -93,8 +94,6 @@ public abstract  class AbstractBaseVO implements BaseVO {
 
         return false;
     }
-
-
 
     private Long id;
 

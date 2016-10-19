@@ -1,6 +1,7 @@
-package gov.tfl.oyster.services.lookupservice;
+package gov.tfl.oyster.domains.lookupservice;
 
-import gov.tfl.oyster.common.domains.AbstractBaseVO;
+
+import gov.tfl.oyster.domains.common.AbstractBaseVO;
 
 import javax.persistence.*;
 import java.util.List;
@@ -10,11 +11,7 @@ import java.util.List;
  */
 
 @Entity
-@Table(name="TFL_LOOKUP_TYPE")
-@NamedQueries(value = {
-        @NamedQuery(name = "FindLookupTypeByName",query = "SELECT * FROM LookupTypeVO vo where vo.description = :typeName"),
-        @NamedQuery(name = "FindLookupByNameAndType",query = "SELECT * FROM LookupTypeVO vo where vo.description = :typeName AND vo.")
-})
+@Table(name="TFL_LOOKUP_TYPE1")
 public class LookupTypeVO extends AbstractBaseVO {
     private static final long serialVersionUID = -7505301198588550535L;
     private String description;

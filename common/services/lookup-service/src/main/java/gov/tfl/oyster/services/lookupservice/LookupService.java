@@ -1,6 +1,7 @@
 package gov.tfl.oyster.services.lookupservice;
 
-import gov.tfl.oyster.common.domains.Loggable;
+import gov.tfl.oyster.Loggable;
+import gov.tfl.oyster.domains.lookupservice.LookupVO;
 
 import java.util.List;
 

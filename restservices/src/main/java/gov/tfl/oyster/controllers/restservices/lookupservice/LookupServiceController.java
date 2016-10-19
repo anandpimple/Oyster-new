@@ -1,11 +1,13 @@
-package gov.tfl.oyster.restservices.controllers.lookupservice;
+package gov.tfl.oyster.controllers.restservices.lookupservice;
 
-import gov.tfl.oyster.common.domains.Loggable;
+import gov.tfl.oyster.Loggable;
+import gov.tfl.oyster.domains.lookupservice.LookupVO;
 import gov.tfl.oyster.services.lookupservice.LookupService;
-import gov.tfl.oyster.services.lookupservice.LookupServiceImpl;
-import gov.tfl.oyster.services.lookupservice.LookupVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.logging.Logger;
 
@@ -17,6 +19,8 @@ import java.util.logging.Logger;
 public class LookupServiceController implements Loggable {
     @Autowired
     private LookupService lookupService;
+
+
     @RequestMapping("/refresh")
     public @ResponseBody String refresh(){
         debug("Refreshing lookup cache",null);
@@ -27,7 +31,7 @@ public class LookupServiceController implements Loggable {
     @RequestMapping("/{typeName}/{name}")
     public @ResponseBody
     LookupVO getLookup(@PathVariable("name") String name, @PathVariable("typeName") String typeName ){
-        debug(String.format("Getting lookup for %1 of type %2", new String[]{name,typeName}),null);
+        debug(String.format("Getting lookup for %1 of type %2", new Object[]{name,typeName}),null);
         return lookupService.getLookup(name,typeName);
     }
 
@@ -35,5 +39,11 @@ public class LookupServiceController implements Loggable {
         return Logger.getLogger(this.getClass().getName());
     }
 
+    public LookupService getLookupService() {
+        return lookupService;
+    }
 
+    public void setLookupService(LookupService lookupService) {
+        this.lookupService = lookupService;
+    }
 }

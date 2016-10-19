@@ -1,4 +1,4 @@
-package gov.tfl.oyster.common.domains;
+package gov.tfl.oyster.domains.common;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;

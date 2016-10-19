@@ -1,4 +1,4 @@
-package gov.tfl.oyster.restservices.controllers.apportionment;
+package gov.tfl.oyster.controllers.restservices.apportionment;
 
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/apportionment")
 public class ApportionmentServiceController {
     @RequestMapping("/apply")
-    public @ResponseBody  String apply(@RequestBody String name){
+    public @ResponseBody  String apply(){
         return "Hello";
     }
 }
