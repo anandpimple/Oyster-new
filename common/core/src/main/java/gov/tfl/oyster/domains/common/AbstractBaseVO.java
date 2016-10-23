@@ -112,6 +112,8 @@ public abstract  class AbstractBaseVO implements BaseVO {
      * @return id
      */
     @Id
+    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getId() {
         return id;
     }
@@ -170,7 +172,7 @@ public abstract  class AbstractBaseVO implements BaseVO {
         StringBuffer ret = new StringBuffer();
         ret.append("======= " + getClass().getName() + " =======");
         ret.append("\n");
-        ret.append("ID: " + ((BaseVO)this).getId() + "\n");
+        ret.append("ID: " + this.getId() + "\n");
 
         Method[] methods = getClass().getMethods();
         int len = methods.length;

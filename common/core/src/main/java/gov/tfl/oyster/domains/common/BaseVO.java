@@ -9,7 +9,6 @@ import javax.persistence.Transient;
  * Created by dev on 17/10/16.
  */
 public interface BaseVO extends Serializable {
-    Long getId();
     /**
      * Checks whether New record
      *
