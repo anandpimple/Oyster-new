@@ -6,6 +6,7 @@
 package com.oma.domains;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -23,8 +24,8 @@ import javax.persistence.Version;
 @MappedSuperclass
 public class BaseEntity implements Serializable {
     private Long id;
-    private Date createDate;
-    private Date modifiedDate;
+    private LocalDateTime createDate;
+    private LocalDateTime modifiedDate;
     private Long version;
 
     @Id
@@ -38,22 +39,22 @@ public class BaseEntity implements Serializable {
         this.id = id;
     }
     @Column(name = "CREATION_DATE",nullable = false)
-    @Temporal(TemporalType.DATE)
-    public Date getCreateDate() {
+    @Temporal(TemporalType.TIMESTAMP)
+    public LocalDateTime getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(Date createDate) {
+    public void setCreateDate(LocalDateTime createDate) {
         this.createDate = createDate;
     }
 
     @Column(name = "MODIFICATION_DATE")
-    @Temporal(TemporalType.DATE)
-    public Date getModifiedDate() {
+    @Temporal(TemporalType.TIMESTAMP)
+    public LocalDateTime getModifiedDate() {
         return modifiedDate;
     }
 
-    public void setModifiedDate(Date modifiedDate) {
+    public void setModifiedDate(LocalDateTime modifiedDate) {
         this.modifiedDate = modifiedDate;
     }
 

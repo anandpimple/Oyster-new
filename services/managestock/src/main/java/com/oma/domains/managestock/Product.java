@@ -7,9 +7,8 @@ package com.oma.domains.managestock;
 
 import com.oma.domains.BaseEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Collection;
 
 /**
  *
@@ -19,6 +18,8 @@ import javax.persistence.Table;
 @Table(name = "PRODUCTS")
 public class Product extends BaseEntity{
     private String name;
+    private Collection<Property> properties;
+
     @Column(name="PRODUCT_NAME", nullable = false,length = 100)
     public String getName() {
         return name;
@@ -26,5 +27,16 @@ public class Product extends BaseEntity{
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "PRODUCT_TO_PROPERTY",joinColumns=@JoinColumn(name="PRODUCT_ID", referencedColumnName="ID"),
+            inverseJoinColumns=@JoinColumn(name="PROPERTY_ID", referencedColumnName="ID"))
+    public Collection<Property> getProperties() {
+        return properties;
+    }
+
+    public void setProperties(Collection<Property> properties) {
+        this.properties = properties;
     }
 }
