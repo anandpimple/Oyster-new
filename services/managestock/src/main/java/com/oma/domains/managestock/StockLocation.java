@@ -17,8 +17,6 @@ public class StockLocation extends BaseEntity {
 
     private Stock sock;
     private StockLocation parentSockLocation;
-    private Item stockedItem;
-    private Date stockedSince;
 
     @ManyToOne
     @JoinColumn(name = "STOCK_ID")
@@ -38,33 +36,5 @@ public class StockLocation extends BaseEntity {
 
     public void setParentSockLocation(StockLocation parentSockLocation) {
         this.parentSockLocation = parentSockLocation;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "ITEM_ID")
-    public Item getStockedItem() {
-        return stockedItem;
-    }
-
-    public void setStockedItem(Item stockedItem) {
-        this.stockedItem = stockedItem;
-    }
-
-    @Column(name = "STOCKED_ON")
-    @Temporal(TemporalType.TIMESTAMP)
-    public Date getStockedSince() {
-        return stockedSince;
-    }
-
-    public void setStockedSince(Date stockedSince) {
-        this.stockedSince = stockedSince;
-    }
-
-    @Transient
-    public Item removeItem(){
-        Item localItem = stockedItem;
-        stockedItem = null;
-        stockedSince = null;
-        return localItem;
     }
 }

@@ -23,7 +23,8 @@ public class Order extends BaseEntity{
     private OrderType type;
     private OrderStatus status;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany
+    @JoinColumn(referencedColumnName = "PRODUCT_ID")
     public Collection<Item> getItems() {
         return items;
     }

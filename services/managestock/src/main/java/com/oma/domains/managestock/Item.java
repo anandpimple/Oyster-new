@@ -25,6 +25,7 @@ public class Item extends BaseEntity{
     private Order order;
     private Collection<Discount>  discounts;
     private Collection<ItemProductPropertyValue>  propertyValue;
+    private StockLocation stockLocation;
 
     @Column(name = "PRODUCTION_DATE")
     @Temporal(TemporalType.TIMESTAMP)
@@ -36,7 +37,7 @@ public class Item extends BaseEntity{
         this.dateOfProduction = dateOfProduction;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "PRODUCT_ID")
     public Product getProduct() {
         return product;
@@ -47,7 +48,7 @@ public class Item extends BaseEntity{
     }
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "PARENT_ID")
+    @JoinColumn(referencedColumnName = "PARENT_ID")
     public Collection<Item> getSubitems() {
         return subitems;
     }
@@ -56,7 +57,7 @@ public class Item extends BaseEntity{
         this.subitems = subitems;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "PARENT_ID")
     public Item getParentItem() {
         return parentItem;
@@ -84,7 +85,7 @@ public class Item extends BaseEntity{
         this.sellsPrice = sellsPrice;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "ORDER_ID")
     public Order getOrder() {
         return order;
@@ -114,4 +115,23 @@ public class Item extends BaseEntity{
         this.discounts = discounts;
     }
 
+    @OneToMany
+    @JoinColumn(referencedColumnName = "ITEM_ID")
+    public Collection<ItemProductPropertyValue> getPropertyValue() {
+        return propertyValue;
+    }
+
+    public void setPropertyValue(Collection<ItemProductPropertyValue> propertyValue) {
+        this.propertyValue = propertyValue;
+    }
+
+    @ManyToOne
+    @JoinColumn(name="STOCK_LOCATION_ID")
+    public StockLocation getStockLocation() {
+        return stockLocation;
+    }
+
+    public void setStockLocation(StockLocation stockLocation) {
+        this.stockLocation = stockLocation;
+    }
 }

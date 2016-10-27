@@ -41,6 +41,16 @@ public class Stock extends BaseEntity{
         this.supportedProducts = products;
     }
 
+    @OneToMany
+    @JoinColumn(referencedColumnName = "STOCK_ID")
+    public Collection<StockLocation> getStockLocations() {
+        return stockLocations;
+    }
+
+    public void setStockLocations(Collection<StockLocation> stockLocations) {
+        this.stockLocations = stockLocations;
+    }
+
     @Transient
     public boolean isProductAllowed(Product product){
         return null != supportedProducts && supportedProducts.isEmpty()?supportedProducts.contains(product):false;
