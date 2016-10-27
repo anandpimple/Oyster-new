@@ -10,6 +10,7 @@ import java.util.Collection;
  */
 @Entity
 @Table(name = "ORDERS")
+@SequenceGenerator(name = "ID_GENRATOR",initialValue = 1,sequenceName = "ORDERS_SEQ")
 public class Order extends BaseEntity{
     public enum OrderType{
         PURCHASE,SALE,INTERNAL

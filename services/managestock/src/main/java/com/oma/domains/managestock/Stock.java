@@ -17,9 +17,11 @@ import java.util.List;
  */
 @Entity 
 @Table(name="STOCKS")
+@SequenceGenerator(name = "ID_GENRATOR",initialValue = 1,sequenceName = "STOCKS_SEQ")
 public class Stock extends BaseEntity{
     private String name;
-    private Collection<Product> products;
+    private Collection<Product> supportedProducts;
+    private Collection<StockLocation> stockLocations;
     @Column(name="STOCK_NAME", nullable = false,length = 100)
     public String getName() {
         return name;
@@ -31,11 +33,16 @@ public class Stock extends BaseEntity{
     @ManyToMany
     @JoinTable(name = "STOCK_TO_PRODUCT",joinColumns=@JoinColumn(name="STOCK_ID", referencedColumnName="ID"),
             inverseJoinColumns=@JoinColumn(name="PRODUCT_ID", referencedColumnName="ID"))
-    public Collection<Product> getProducts() {
-        return products;
+    public Collection<Product> getSupportedProducts() {
+        return supportedProducts;
     }
 
-    public void setProducts(Collection<Product> products) {
-        this.products = products;
+    public void setSupportedProducts(Collection<Product> products) {
+        this.supportedProducts = products;
+    }
+
+    @Transient
+    public boolean isProductAllowed(Product product){
+        return null != supportedProducts && supportedProducts.isEmpty()?supportedProducts.contains(product):false;
     }
 }

@@ -9,6 +9,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "PROPERTIES")
+@SequenceGenerator(name = "ID_GENRATOR",initialValue = 1,sequenceName = "PROPERTIES_SEQ")
 public class Property extends BaseEntity {
     public enum PropertyType {
         INTEGER,LONG,DECIMAL,BIGDECIMAL,FLOAT,STRING;
@@ -36,6 +37,7 @@ public class Property extends BaseEntity {
         this.type = type;
     }
 
+    @Column(name = "IS_REQUIRED")
     public boolean isMandatory() {
         return mandatory;
     }

@@ -16,6 +16,7 @@ import java.util.Collection;
  */
 @Entity
 @Table(name = "PRODUCTS")
+@SequenceGenerator(name = "ID_GENRATOR",initialValue = 1,sequenceName = "PRODUCTS_SEQ")
 public class Product extends BaseEntity{
     private String name;
     private Collection<Property> properties;

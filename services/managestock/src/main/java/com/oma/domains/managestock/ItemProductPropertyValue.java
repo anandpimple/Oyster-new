@@ -9,6 +9,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "ITEM_PRODUCT_PROPERTY_VALUE")
+@SequenceGenerator(name = "ID_GENRATOR",initialValue = 1,sequenceName = "ITEM_PRODUCT_PROPERTY_VALUE_SEQ")
 public class ItemProductPropertyValue extends BaseEntity{
     private Property productPropert;
     private String value;

@@ -6,14 +6,16 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.Date;
 
 /**
  * Created by dev on 26/10/16.
  */
 @Entity
 @Table(name = "ITEMS")
+@SequenceGenerator(name = "ID_GENRATOR",initialValue = 1,sequenceName = "ITEMS_SEQ")
 public class Item extends BaseEntity{
-    private LocalDateTime dateOfProduction;
+    private Date dateOfProduction;
     private Product product;
     private Collection<Item> subitems;
     private BigDecimal purchasePrice;
@@ -26,11 +28,11 @@ public class Item extends BaseEntity{
 
     @Column(name = "PRODUCTION_DATE")
     @Temporal(TemporalType.TIMESTAMP)
-    public LocalDateTime getDateOfProduction() {
+    public Date getDateOfProduction() {
         return dateOfProduction;
     }
 
-    public void setDateOfProduction(LocalDateTime dateOfProduction) {
+    public void setDateOfProduction(Date dateOfProduction) {
         this.dateOfProduction = dateOfProduction;
     }
 
@@ -45,6 +47,7 @@ public class Item extends BaseEntity{
     }
 
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "PARENT_ID")
     public Collection<Item> getSubitems() {
         return subitems;
     }

@@ -24,12 +24,12 @@ import javax.persistence.Version;
 @MappedSuperclass
 public class BaseEntity implements Serializable {
     private Long id;
-    private LocalDateTime createDate;
-    private LocalDateTime modifiedDate;
+    private Date createDate;
+    private Date modifiedDate;
     private Long version;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "ID_GENRATOR")
     @Column(name = "ID",nullable = false,length = 15)
     public Long getId() {
         return id;
@@ -40,21 +40,21 @@ public class BaseEntity implements Serializable {
     }
     @Column(name = "CREATION_DATE",nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
-    public LocalDateTime getCreateDate() {
+    public Date getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(LocalDateTime createDate) {
+    public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
 
     @Column(name = "MODIFICATION_DATE")
     @Temporal(TemporalType.TIMESTAMP)
-    public LocalDateTime getModifiedDate() {
+    public Date getModifiedDate() {
         return modifiedDate;
     }
 
-    public void setModifiedDate(LocalDateTime modifiedDate) {
+    public void setModifiedDate(Date modifiedDate) {
         this.modifiedDate = modifiedDate;
     }
 
