@@ -3,6 +3,7 @@ package com.oma.domains.managestock;
 import com.oma.domains.BaseEntity;
 
 import javax.persistence.Entity;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.util.Date;
 
@@ -11,6 +12,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "ITEM_STOCK_LOCATIONS")
+@SequenceGenerator(name = "ID_GENRATOR",initialValue = 1,sequenceName = "ITEM_STOCK_LOCATIONS_SEQ")
 public class ItemStockLocation extends BaseEntity{
     private Item item;
     private Date stockedSince;
