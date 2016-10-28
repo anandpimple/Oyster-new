@@ -16,7 +16,7 @@ public class ItemProductPropertyValue extends BaseEntity{
     private Item item;
 
     @OneToOne
-    @JoinColumn(name = "PROPERTY_ID")
+    @JoinColumn(name = "PROPERTY_ID",referencedColumnName = "ID")
     public Property getProductPropert() {
         return productPropert;
     }
@@ -33,8 +33,8 @@ public class ItemProductPropertyValue extends BaseEntity{
         this.value = value;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ITEM_ID")
+    @ManyToOne
+    @JoinColumn(name = "ITEM_ID",referencedColumnName = "ID")
     public Item getItem() {
         return item;
     }

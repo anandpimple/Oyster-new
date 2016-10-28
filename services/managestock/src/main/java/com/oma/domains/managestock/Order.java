@@ -23,8 +23,7 @@ public class Order extends BaseEntity{
     private OrderType type;
     private OrderStatus status;
 
-    @OneToMany
-    @JoinColumn(referencedColumnName = "PRODUCT_ID")
+    @OneToMany(cascade = CascadeType.ALL)
     public Collection<Item> getItems() {
         return items;
     }

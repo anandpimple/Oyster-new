@@ -43,7 +43,7 @@ public class Product extends BaseEntity{
     }
 
     @ManyToOne
-    @JoinColumn(name = "CATEGORY_ID")
+    @JoinColumn(name = "CATEGORY_ID",referencedColumnName = "ID")
     public Category getCategory() {
         return category;
     }

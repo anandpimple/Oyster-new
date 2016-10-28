@@ -27,7 +27,7 @@ public class Category extends BaseEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "PARENT_ID")
+    @JoinColumn(name = "PARENT_ID",referencedColumnName = "ID")
     public Category getParent() {
         return parent;
     }
@@ -37,7 +37,7 @@ public class Category extends BaseEntity {
     }
 
     @OneToMany
-    @JoinColumn(referencedColumnName = "PARENT_ID")
+    @JoinColumn(name = "ID",referencedColumnName = "PARENT_ID")
     public Collection<Category> getChildCategories() {
         return childCategories;
     }
@@ -47,7 +47,7 @@ public class Category extends BaseEntity {
     }
 
     @OneToMany
-    @JoinColumn(referencedColumnName = "CATEGORY_ID")
+    @JoinColumn(name = "CATEGORY_ID",referencedColumnName = "ID")
     public Collection<Product> getProducts() {
         return products;
     }

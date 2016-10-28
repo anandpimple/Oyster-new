@@ -42,7 +42,7 @@ public class Stock extends BaseEntity{
     }
 
     @OneToMany
-    @JoinColumn(referencedColumnName = "STOCK_ID")
+    @JoinColumn(name = "STOCK_ID", referencedColumnName = "ID")
     public Collection<StockLocation> getStockLocations() {
         return stockLocations;
     }

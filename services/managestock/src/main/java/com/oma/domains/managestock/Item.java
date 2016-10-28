@@ -25,7 +25,7 @@ public class Item extends BaseEntity{
     private Order order;
     private Collection<Discount>  discounts;
     private Collection<ItemProductPropertyValue>  propertyValue;
-    private StockLocation stockLocation;
+    private ItemStockLocation itemStockLocation;
 
     @Column(name = "PRODUCTION_DATE")
     @Temporal(TemporalType.TIMESTAMP)
@@ -38,7 +38,7 @@ public class Item extends BaseEntity{
     }
 
     @ManyToOne
-    @JoinColumn(name = "PRODUCT_ID")
+    @JoinColumn(name = "PRODUCT_ID",referencedColumnName = "ID")
     public Product getProduct() {
         return product;
     }
@@ -48,7 +48,7 @@ public class Item extends BaseEntity{
     }
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(referencedColumnName = "PARENT_ID")
+    @JoinColumn(name="PARENT_ID",referencedColumnName = "ID")
     public Collection<Item> getSubitems() {
         return subitems;
     }
@@ -58,7 +58,6 @@ public class Item extends BaseEntity{
     }
 
     @ManyToOne
-    @JoinColumn(name = "PARENT_ID")
     public Item getParentItem() {
         return parentItem;
     }
@@ -86,7 +85,7 @@ public class Item extends BaseEntity{
     }
 
     @ManyToOne
-    @JoinColumn(name = "ORDER_ID")
+    @JoinColumn(name = "ORDER_ID",referencedColumnName = "ID")
     public Order getOrder() {
         return order;
     }
@@ -105,7 +104,7 @@ public class Item extends BaseEntity{
     }
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "ITEM_TO_DISCOUNTS",joinColumns=@JoinColumn(name="ORDER_ID", referencedColumnName="ID"),
+    @JoinTable(name = "ITEM_TO_DISCOUNTS",joinColumns=@JoinColumn(name="ITEM_ID", referencedColumnName="ID"),
             inverseJoinColumns=@JoinColumn(name="DISCOUNT_ID", referencedColumnName="ID"))
     public Collection<Discount> getDiscounts() {
         return discounts;
@@ -116,7 +115,7 @@ public class Item extends BaseEntity{
     }
 
     @OneToMany
-    @JoinColumn(referencedColumnName = "ITEM_ID")
+    @JoinColumn(name="ITEM_ID",referencedColumnName = "ID")
     public Collection<ItemProductPropertyValue> getPropertyValue() {
         return propertyValue;
     }
@@ -126,12 +125,11 @@ public class Item extends BaseEntity{
     }
 
     @ManyToOne
-    @JoinColumn(name="STOCK_LOCATION_ID")
-    public StockLocation getStockLocation() {
-        return stockLocation;
+    public ItemStockLocation getItemStockLocation() {
+        return itemStockLocation;
     }
 
-    public void setStockLocation(StockLocation stockLocation) {
-        this.stockLocation = stockLocation;
+    public void setItemStockLocation(ItemStockLocation itemStockLocation) {
+        this.itemStockLocation = itemStockLocation;
     }
 }

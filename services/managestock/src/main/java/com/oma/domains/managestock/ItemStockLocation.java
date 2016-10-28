@@ -2,9 +2,7 @@ package com.oma.domains.managestock;
 
 import com.oma.domains.BaseEntity;
 
-import javax.persistence.Entity;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -19,6 +17,8 @@ public class ItemStockLocation extends BaseEntity{
     private Date removedOn;
     private StockLocation stockLocation;
 
+    @ManyToOne
+    @JoinColumn(name = "ITEM_ID",referencedColumnName = "ID")
     public Item getItem() {
         return item;
     }
@@ -27,6 +27,8 @@ public class ItemStockLocation extends BaseEntity{
         this.item = item;
     }
 
+    @Column(name="STOCKED_ON")
+    @Temporal(TemporalType.TIMESTAMP)
     public Date getStockedSince() {
         return stockedSince;
     }
@@ -35,6 +37,8 @@ public class ItemStockLocation extends BaseEntity{
         this.stockedSince = stockedSince;
     }
 
+    @Column(name="STOCKED_OFF")
+    @Temporal(TemporalType.TIMESTAMP)
     public Date getRemovedOn() {
         return removedOn;
     }
@@ -43,6 +47,8 @@ public class ItemStockLocation extends BaseEntity{
         this.removedOn = removedOn;
     }
 
+    @ManyToOne
+    @JoinColumn(name="LOCATION_ID",referencedColumnName = "ID")
     public StockLocation getStockLocation() {
         return stockLocation;
     }
