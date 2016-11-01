@@ -3,9 +3,7 @@ package com.oma.controllers.managestock;
 import com.oma.domains.managestock.Category;
 import com.oma.repositories.managestock.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,7 +17,13 @@ public class ManageStockController {
     @Autowired
     private CategoryRepository categoryRepository;
     @RequestMapping(path = "/categories")
-    public @ResponseBody List<Category> manage(){
+    public @ResponseBody List<Category> listAll(){
         return categoryRepository.findAll();
     }
+    @RequestMapping(path = "/categories/add", method = RequestMethod.POST)
+    public @ResponseBody List<Category> add(@RequestBody Category category){
+        categoryRepository.saveAndFlush(category);
+        return categoryRepository.findAll();
+    }
+
 }
