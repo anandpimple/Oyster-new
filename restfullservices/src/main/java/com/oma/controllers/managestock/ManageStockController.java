@@ -1,8 +1,13 @@
 package com.oma.controllers.managestock;
 
+import com.oma.domains.managestock.Category;
+import com.oma.repositories.managestock.CategoryRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  *
@@ -11,8 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(path = "/stock")
 public class ManageStockController {
-    @RequestMapping(path = "/manage")
-    public @ResponseBody String manage(){
-        return "Hello";
+    @Autowired
+    private CategoryRepository categoryRepository;
+    @RequestMapping(path = "/categories")
+    public @ResponseBody List<Category> manage(){
+        return categoryRepository.findAll();
     }
 }

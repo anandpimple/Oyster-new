@@ -2,7 +2,7 @@ package gov.tfl.oyster.restservices;
 
 import org.apache.commons.dbcp.BasicDataSource;
 import org.hibernate.SessionFactory;
-import org.hibernate.jpa.boot.spi.EntityManagerFactoryBuilder;
+//import org.hibernate.jpa.boot.spi.EntityManagerFactoryBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -28,13 +28,17 @@ public class BeanConfigurations {
     @Bean(name = "dataSource")
     public DataSource getDataSource() {
         BasicDataSource dataSource = new BasicDataSource();
-//        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
-        dataSource.setUrl("jdbc:oracle:thin:@127.0.0.1:1521:XE");
+////        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+//        dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
+//        dataSource.setUrl("jdbc:oracle:thin:@127.0.0.1:1521:XE");
 //        dataSource.setDriverClassName("com.oracle.jdbc.Driver");
 //        dataSource.setUrl("jdbc:mysql://127.0.0.1:1521/INVENTORY?profileSQL=true");
-        dataSource.setUsername("INVENTORY");
-        dataSource.setPassword("omkar@060707");
+//        dataSource.setUsername("INVENTORY");
+//        dataSource.setPassword("omkar@060707");
+        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+        dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/INVENTORY?profileSQL=true");
+        dataSource.setUsername("root");
+        dataSource.setPassword("omkar060707");
         return dataSource;
     }
     @Autowired
@@ -49,8 +53,8 @@ public class BeanConfigurations {
 
 
         Properties jpaProps = new Properties();
-//        jpaProps.put("hibernate.dialect","org.hibernate.dialect.MySQLDialect");
-        jpaProps.put("hibernate.dialect","org.hibernate.dialect.OracleDialect");
+        jpaProps.put("hibernate.dialect","org.hibernate.dialect.MySQLDialect");
+//        jpaProps.put("hibernate.dialect","org.hibernate.dialect.OracleDialect");
         jpaProps.put("hibernate.hbm2ddl.show-sql","true");
         jpaProps.put("hibernate.hbm2ddl.auto","create-drop");
         factory.setJpaProperties(jpaProps);
