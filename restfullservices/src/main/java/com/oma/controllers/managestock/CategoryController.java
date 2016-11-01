@@ -12,8 +12,8 @@ import java.util.List;
  * @author anandpimple
  */
 @RestController
-@RequestMapping(path = "/stock")
-public class ManageStockController {
+@RequestMapping(path = "/inventory")
+public class CategoryController {
     @Autowired
     private CategoryRepository categoryRepository;
     @RequestMapping(path = "/categories")
