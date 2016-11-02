@@ -8,12 +8,16 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
+import java.util.function.Function;
+import java.util.stream.Stream;
+
 /**
  * Created by dev on 14/10/16.
  */
 @SpringBootApplication
 public class ApplicationRunner {
     public static void main(String [] args){
+
         ApplicationContext ctx = SpringApplication.run(ApplicationRunner.class, args);
     }
 }

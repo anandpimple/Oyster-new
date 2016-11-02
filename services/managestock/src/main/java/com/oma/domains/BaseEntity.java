@@ -27,6 +27,7 @@ public class BaseEntity implements Serializable {
     private Date createDate;
     private Date modifiedDate;
     private Long version;
+    private boolean active;
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "ID_GENRATOR")
@@ -67,5 +68,13 @@ public class BaseEntity implements Serializable {
     public void setVersion(Long version) {
         this.version = version;
     }
-    
+
+    @Column(name = "ACTIVE",nullable = false)
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 }
